@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pandas
+scikit-learn
+python-jose[cryptography]
+passlib[bcrypt]
+python-multipart
+pydantic[email]
+sqlite3-api
+cors
