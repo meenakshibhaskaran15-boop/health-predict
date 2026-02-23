@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import PredictForm from './components/PredictForm'
@@ -96,7 +96,7 @@ function App() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <Hero />
+            <Hero onStart={() => setView(user ? 'form' : 'auth')} />
             <div className="container" style={{ textAlign: 'center', marginTop: '-2rem' }}>
               <button
                 className="btn btn-primary"

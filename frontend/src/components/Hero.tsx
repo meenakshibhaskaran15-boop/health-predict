@@ -2,7 +2,11 @@ import React from 'react';
 import { ShieldCheck, Zap, HeartPulse } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+    onStart: () => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onStart }) => {
     return (
         <section style={{ padding: '4rem 0' }}>
             <div className="container" style={{ textAlign: 'center' }}>
@@ -19,7 +23,7 @@ const Hero: React.FC = () => {
                         Get personalized health assessments and preventive care guidance based on your symptoms and lifestyle habits.
                     </p>
                     <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem' }}>
-                        <button className="btn btn-primary" style={{ padding: '1rem 2rem' }}>Start Free Assessment</button>
+                        <button className="btn btn-primary" style={{ padding: '1rem 2rem' }} onClick={onStart}>Start Free Assessment</button>
                         <button className="btn" style={{ background: 'white', border: '1px solid #e2e8f0', padding: '1rem 2rem' }}>How it works</button>
                     </div>
                 </motion.div>

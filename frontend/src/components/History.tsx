@@ -34,7 +34,19 @@ const History: React.FC<HistoryProps> = ({ userId }) => {
         if (userId) fetchHistory();
     }, [userId]);
 
+    const getTrend = () => {
+        if (history.length < 2) return 'Insufficient Data';
+        const last = history[history.length - 1].risk;
+        const prev = history[history.length - 2].risk;
+        if (last > prev) return 'Increasing Risk';
+        if (last < prev) return 'Decreasing Risk';
+        return 'Stable Risk';
+    };
+
     if (loading) return <div className="container" style={{ textAlign: 'center', padding: '5rem' }}>Loading health history...</div>;
+
+    const trend = getTrend();
+
     return (
         <div className="container" style={{ paddingBottom: '4rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2.5rem' }}>
@@ -43,8 +55,8 @@ const History: React.FC<HistoryProps> = ({ userId }) => {
                     <p style={{ color: 'var(--text-muted)' }}>Track your risk assessment changes over time</p>
                 </div>
                 <div className="glass" style={{ padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <TrendingUp color="var(--primary)" />
-                    <span style={{ fontWeight: 600 }}>Trend: Increasing Risk</span>
+                    <TrendingUp color={trend === 'Increasing Risk' ? 'var(--risk-high)' : 'var(--risk-low)'} />
+                    <span style={{ fontWeight: 600 }}>Trend: {trend}</span>
                 </div>
             </div>
 
