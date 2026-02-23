@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Activity, User, Info } from 'lucide-react';
+import { Send, Activity, Info } from 'lucide-react';
 
 const symptomsList = [
     'fever', 'cough', 'fatigue', 'shortness_of_breath',

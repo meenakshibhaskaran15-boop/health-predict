@@ -7,7 +7,7 @@ import jsPDF from 'jspdf';
 interface ResultsProps {
     data: {
         prediction: string;
-        risk_score: float;
+        risk_score: number;
         probabilities: Record<string, number>;
         suggested_steps: string[];
         doctor_consult: string;
@@ -20,7 +20,7 @@ const Results: React.FC<ResultsProps> = ({ data, onReset }) => {
         name, value: value * 100
     }));
 
-    const COLORS = {
+    const COLORS: Record<string, string> = {
         'Low': '#22c55e',
         'Medium': '#eab308',
         'High': '#ef4444'
